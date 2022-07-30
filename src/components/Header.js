@@ -110,7 +110,7 @@ class Header extends Component {
           </select>
         </label>
         <label htmlFor="tag-input">
-          Método de Pagamento
+          Categoria
           <select
             data-testid="tag-input"
             id="tag-input"
