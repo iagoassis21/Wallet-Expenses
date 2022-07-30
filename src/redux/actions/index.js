@@ -2,9 +2,11 @@ export const SAVE_USER = 'SAVE_USER';
 export const REQUEST_API = 'REQUEST_API';
 export const GET_CURR = 'GET_CURR';
 export const ADD_EXPENSES = 'ADD_EXPENSES';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 export const saveUserAction = (email) => ({ type: SAVE_USER, email });
 export const requestAPI = () => ({ type: REQUEST_API });
 export const getCurrencies = (data) => ({ type: GET_CURR, data });
+export const deleteExpenseAction = (newEx) => ({ type: DELETE_EXPENSE, newEx });
 
 export function fetchAPI() {
   return async (dispatch) => {
