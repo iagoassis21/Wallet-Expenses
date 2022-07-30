@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchAPI, saveExpenseAction } from '../redux/actions';
+import { fetchAPI, saveExpenseAction, editedExpense } from '../redux/actions';
 
 class Header extends Component {
   constructor() {
@@ -42,9 +42,34 @@ class Header extends Component {
     });
   }
 
+  handleEditNewExpense = (expense) => {
+    const { editedExpense: edit } = this.props;
+    const { value, description, currency, method, tag } = this.state;
+    const { id, exchangeRates } = expense;
+    edit({
+      id, value, description, currency, method, tag, exchangeRates,
+    });
+  }
+
   render() {
     const { value, description, currency, method, tag } = this.state;
-    const { email, currencies, expenses } = this.props;
+    const { email, currencies, expenses, editor, idToEdit } = this.props;
+    const editBtn = (
+      <button
+        type="button"
+        onClick={ () => this.handleEditNewExpense(idToEdit) }
+      >
+        Editar despesa
+      </button>
+    );
+    const addExpenseBtn = (
+      <button
+        type="button"
+        onClick={ this.handleAddExpenses }
+      >
+        Adicionar despesa
+      </button>
+    );
     const sum = expenses
       .reduce((acc, curr) => (
         acc + Number(curr.value) * Number(curr.exchangeRates[curr.currency].ask)), 0);
@@ -125,12 +150,9 @@ class Header extends Component {
             <option value="Saúde">Saúde</option>
           </select>
         </label>
-        <button
-          type="button"
-          onClick={ this.handleAddExpenses }
-        >
-          Adicionar despesa
-        </button>
+        {
+          !editor ? addExpenseBtn : editBtn
+        }
       </div>
     );
   }
@@ -139,12 +161,15 @@ class Header extends Component {
 const mapDispatchToProps = (dispatch) => ({
   fetchAPI: () => dispatch(fetchAPI()),
   saveExpenseAction: (state) => dispatch(saveExpenseAction(state)),
+  editedExpense: (state) => dispatch(editedExpense(state)),
 });
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
   currencies: state.wallet.currencies,
   expenses: state.wallet.expenses,
+  editor: state.wallet.editor,
+  idToEdit: state.wallet.idToEdit,
 });
 
 Header.propTypes = {
@@ -154,6 +179,11 @@ Header.propTypes = {
   saveExpenseAction: PropTypes.func.isRequired,
   reduce: PropTypes.func.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.string).isRequired,
+  editedExpense: PropTypes.func.isRequired,
+  editor: PropTypes.bool.isRequired,
+  idToEdit: PropTypes.shape({
+    id: PropTypes.string,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
