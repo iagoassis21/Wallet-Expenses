@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { saveUserAction } from '../redux/actions';
+import './Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -33,46 +34,54 @@ class Login extends React.Component {
   handleSubmit = () => {
     const { email } = this.state;
     const { history, saveUserAction: sendUser } = this.props;
+    if (!localStorage.getItem('user')) {
+      localStorage.setItem('user', email);
+    }
     sendUser(email);
-    console.log(history);
     history.push('/carteira');
   }
 
   render() {
     const { email, pass } = this.state;
     return (
-      <div>
-        <form>
-          <label htmlFor="emailInput">
-            <input
-              onChange={ this.handleChange }
-              value={ email }
-              name="email"
-              data-testid="email-input"
-              placeholder="email"
-              id="emailInput"
-              type="text"
-            />
-          </label>
-          <label htmlFor="passInput">
-            <input
-              onChange={ this.handleChange }
-              value={ pass }
-              name="pass"
-              data-testid="password-input"
-              id="passInput"
-              placeholder="senha"
-              type="password"
-            />
-          </label>
-          <button
-            disabled={ this.checkUserInfo() }
-            type="button"
-            onClick={ this.handleSubmit }
-          >
-            Entrar
-          </button>
-        </form>
+      <div className="loginDiv">
+        <div className="containerDiv">
+          <h1 className="walletTittle">Wallet Expenses</h1>
+          <form className="loginForm">
+            <label htmlFor="emailInput">
+              <input
+                className="inputText"
+                onChange={ this.handleChange }
+                value={ email }
+                name="email"
+                data-testid="email-input"
+                placeholder="email"
+                id="emailInput"
+                type="text"
+              />
+            </label>
+            <label htmlFor="passInput">
+              <input
+                className="inputText"
+                onChange={ this.handleChange }
+                value={ pass }
+                name="pass"
+                data-testid="password-input"
+                id="passInput"
+                placeholder="senha"
+                type="password"
+              />
+            </label>
+            <button
+              className="submitBtn"
+              disabled={ this.checkUserInfo() }
+              type="button"
+              onClick={ this.handleSubmit }
+            >
+              Login
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

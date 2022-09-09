@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.loginDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content : center;
+    align-items : center;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(2,0,36);
+    background: linear-gradient(345deg, rgba(2,0,36,1) 0%, rgba(93,180,131,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.walletTittle {
+    font-family: 'Courgette', cursive;
+    display: flex;
+    justify-content : center;
+}
+
+.containerDiv {
+    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 8px 8px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.loginForm {
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginDiv .inputText {
+    min-width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0);
+}
+
+.inputText:-webkit-autofill, 
+.inputText:-webkit-autofill:hover,
+.inputText:-webkit-autofill:focus,
+.inputText:-webkit-autofill:active {
+    -webkit-background-clip: text;
+}
+
+.inputText::placeholder {
+    font-family: 'Courgette', cursive;
+    letter-spacing: 0.5px;
+    color: white;
+}
+
+.submitBtn {
+    font-family: 'Courgette', cursive;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    /* width: 50%; */
+    color: white;
+    padding: 4px 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer; 
+    background: linear-gradient(339deg, rgba(80,142,67,0.8) 0%, rgba(87,172,86,0.8) 100%);
+    /* border-radius: 16px; */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(26, 128, 51, 0.3);
+}
+
+.submitBtn:hover {
+background: linear-gradient(339deg, rgba(80,142,67,1) 0%, rgba(87,172,86,1) 100%);
+}
+
+.submitBtn:disabled {
+    cursor: not-allowed;
+  opacity: 0.5;
+}

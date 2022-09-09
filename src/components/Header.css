@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.headerWallet {
+  height: 8vh;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.walletImage {
+  width: 50px;
+}
+
+.expenseSection {
+  display: flex;
+    flex-direction: column;
+    justify-content : center;
+    align-items : center;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(2,0,36);
+    background: linear-gradient(345deg, rgba(2,0,36,1) 0%, rgba(93,180,131,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.expenseInput {
+  min-width: 100%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0);
+}
