@@ -1,3 +1,5 @@
+# Boas-vindas ao meu repositório Wallet Expenses!
+
 <details>
   <summary><strong>👨‍💻 Visão geral da aplicação</strong></summary><br />
 
