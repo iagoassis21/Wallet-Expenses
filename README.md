@@ -5,7 +5,7 @@
 
   Neste projeto você poderá utilizar uma carteira de controle de gastos, com um conversor de moedas incluso:
 
-  - clone o repositório: git clone git@github.com:iagoassis21/Wallet-Expenses.git
+  - clone o repositório: ```git clone git@github.com:iagoassis21/Wallet-Expenses.git```
   - npm install para instalar as dependência;
   - npm start para visualizar a aplicação localmente;
 </details>
